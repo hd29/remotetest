@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="oracle.jdbc.OracleDriver">
+		</property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl"></property>
+		<property name="username" value="system"></property>
+		<property name="password" value="123"></property>
+
+		
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.OracleDialect
+				</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>org/login/vo/Users.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="baseDAO" class="org.login.dao.Impl.BaseDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="userDAO" class="org.login.dao.Impl.UsersDAO" parent="baseDAO"></bean>
+	<bean id="userService" class="org.login.service.Impl.UsersService">
+		<property name="userDAO">
+			<ref bean="userDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="login" class="org.login.actions.Login" scope="prototype">
+		<property name="userService">
+			<ref bean="userService"/>
+		</property>
+	</bean>
+</beans>

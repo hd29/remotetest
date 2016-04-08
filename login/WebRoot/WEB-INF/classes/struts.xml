@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <include file="struts-default.xml"/>
+    <package name="struts2" extends="struts-default">
+    	<action name="logon" class="org.login.actions.Login"><!-- name属性与页面action相对应 -->
+    		<result>/success.jsp</result><!-- 如果不写name,默认跳转到success -->
+    		<result name="input">/login.jsp</result>
+    	</action>
+    	<action name="save" class="org.login.actions.Login" method="save">
+    		<result name="success">/success.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action>
+    	<action name="update" class="login" method="update">
+    		<result name="success">/success.jsp</result>
+    		<result name="update">/update.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action>
+    	<action name="delete" class="login" method="delete">
+    		<result name="success">/success.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action>
+    	<action name="show" class="login" method="findAllUsers">
+    		<result name="success">/list.jsp</result>
+    		<result name="error">/error.jsp</result>
+    	</action>
+    </package>
+</struts>
+

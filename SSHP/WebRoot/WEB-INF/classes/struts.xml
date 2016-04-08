@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+    <include file="struts-default.xml"></include>
+    <constant name="struts.devMode" value="true" />
+
+    <package name="T" namespace="/" extends="struts-default">
+
+    <global-results>
+	<result name="errHandler">/ErrorProcessor.jsp</result>
+    </global-results>
+    <!--自动捕获java.lang.Exception异常，
+               捕获到异常之后return errHandler(result="errHandler")  -->
+    <global-exception-mappings>
+	<exception-mapping result="errHandler" exception="java.lang.Exception">
+	</exception-mapping>
+    </global-exception-mappings>
+    
+    <action name="testAction" class="ssh.TestAction" method="execute">
+    <!-- <interceptor-ref name="token"></interceptor-ref>
+	<interceptor-ref name="defaultStack"></interceptor-ref>
+    <result name="invalid.token">/error.jsp</result> -->
+    <result name="success">/MyJsp.jsp</result>
+    <result name="input">/index.jsp</result>
+    </action>
+   
+    <action name="testAction1" class="ssh.TestAction" method="register">
+    <result name="success">/MyJsp.jsp</result>
+    <result name="input">/index.jsp</result>
+   </action>
+   
+    </package>
+
+  
+
+</struts>

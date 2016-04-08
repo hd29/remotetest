@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans >
+    <form-bean name="userForm" type="com.xiaoyuan.web.form.UserForm" />
+
+  </form-beans>
+
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings >
+    <action
+      input="/test/test.jsp"
+      parameter="flag"
+      path="/test"
+      type="com.xiaoyuan.web.action.TestAction"
+      cancellable="true" >
+      <forward name="show" path="/test/showcountry.jsp" />
+    </action>
+    <action
+      attribute="userForm"
+      input="/public/index.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/register"
+      scope="request"
+      type="com.xiaoyuan.web.action.RegisterAction"
+      validate="false"
+      cancellable="true">
+      <forward name="registSuccess" path="/self/home.jsp" />
+      <forward name="registUI" path="/public/register.jsp" />
+    </action>
+    <action
+      attribute="userForm"
+      input="/self/uploadPhoto.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/profile"
+      scope="request"
+      type="com.xiaoyuan.web.action.ProfileAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goHomePageUI" path="/self/homePage.jsp" />
+      <forward name="goUploadPhotoUI" path="/self/uploadPhoto.jsp" />
+    </action>
+    <action
+      attribute="userForm"
+      input="/public/index.jsp"
+      name="userForm"
+      parameter="flag"
+      path="/login"
+      scope="request"
+      type="com.xiaoyuan.web.action.LoginAction"
+      validate="false"
+      cancellable="true" >
+      <forward name="goHomeUI" path="/self/home.jsp" />
+      <forward name="goIndexUI" path="/public/index.jsp" />
+    </action>
+    <action
+      input="/self/myAlbum.jsp"
+      parameter="flag"
+      path="/album"
+      type="com.xiaoyuan.web.action.AlbumAction"
+      validate="false"
+      cancellable="true">
+      <forward name="goMyAlbumUI" path="/self/myAlbum.jsp" />
+      <forward name="goAddAlbumUI" path="/self/addOrChoiceAlblum.jsp" />
+      <forward name="goAddPhotoUI" path="/self/addPhoto.jsp" />
+      <forward name="goOneAlbumUI" path="/self/oneAlbum.jsp" />
+      <forward name="goOnePhotoUI" path="/self/onePhoto.jsp" />
+    </action>
+
+    
+
+    
+
+
+
+
+
+
+  </action-mappings>
+<!-- 配置请求处理器，就是把action的创建交给spring容器处理 -->
+ <controller>
+ <set-property property="processorClass" value="org.springframework.web.struts.DelegatingRequestProcessor"/>
+</controller> 
+
+  <message-resources parameter="com.xiaoyuan.struts.ApplicationResources" />
+</struts-config>
+

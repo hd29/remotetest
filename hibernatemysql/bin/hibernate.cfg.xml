@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+<session-factory>
+<!-- hibernate设计者给我们提供了一些常用的设置 在以下目录找配置-->
+<!-- Hibernate3\hibernate-distribution-3.3.1.GA-dist\hibernate-distribution-3.3.1.GA\project\etc\hibernate.properties -->
+<!-- 配置使用的driver -->
+<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+<property name="connection.username">root</property>
+<property name="connection.password"></property>
+<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+<!-- 配置dialect方言，明确的告诉hibernate连接是哪种数据库  如果是9版本就选9的 其他的选通用版本-->
+<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+<!-- 让hibernate给我们自动创建表   create:有表删除后创建，每一次都重新创建  
+						 update 如果没有该表则创建新表   如果有表 则查看表结构有没有变化，如果有变化则创建新表，如果没有变化则不创建 把数据保存在原表-->
+<property name="hbm2ddl.auto">update</property>
+<!-- 指定管理的对象映射文件 -->
+<mapping resource="com/hsp/domain/Employee.hbm.xml"/>
+</session-factory>
+</hibernate-configuration>

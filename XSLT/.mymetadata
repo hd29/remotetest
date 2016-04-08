@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="XSLT"
+  id="myeclipse.1452840262849"
+  context-root="/XSLT"
+  j2ee-spec="5.0"
+  archive="XSLT.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
