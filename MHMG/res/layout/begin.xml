@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg" >
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:text="@string/game_name"
+        
+        android:textColor="#ffffff"
+        android:textSize="29sp" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
+        android:textColor="#ffffff"
+        android:background="@android:color/transparent"
+        android:text="@string/exitText" 
+       />
+
+    <Button
+        android:id="@+id/begin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/exit"
+        android:layout_above="@+id/exit"
+        android:onClick="onClick"
+         android:background="@android:color/transparent"
+        android:textColor="#ffffff"
+        android:text="@string/beginText" />
+    
+    <Button
+        android:id="@+id/set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/exit"
+        android:layout_below="@+id/exit"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
+        android:textColor="#ffffff"
+        android:background="@android:color/transparent"
+        android:text="@string/setText" />
+    
+    <Button
+        android:id="@+id/help"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/exit"
+        android:layout_below="@+id/set"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
+        android:textColor="#ffffff"
+        android:background="@android:color/transparent"
+        android:text="@string/helpText" />
+   
+    <Button
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/exit"
+        android:layout_below="@+id/help"
+        android:layout_marginTop="10dp"
+        android:onClick="onClick"
+        android:textColor="#ffffff"
+        android:background="@android:color/transparent"
+        android:text="@string/aboutText" />
+    
+    
+</RelativeLayout>
